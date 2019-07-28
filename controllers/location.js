@@ -53,11 +53,11 @@ export const getOneLocations = async (req, res) => {
 export const editLocation = async(req, res) => {
   let id = req.params.id;
   try {
-    // await utils.verifyId(id);
-    let population = await utils.LocationValidator(req);
+    await utils.verifyId(id);
+     req.body.population = await utils.LocationValidator(req);
     req.body.sublocation.population = await utils.subLocationPopulation(req);
 
-    let location = { data: req.body, population: population };
+    let location = { data: req.body };
     await queries.editLocation(res, id, location);
   } catch (err) {
     if (err instanceof TypeError) {

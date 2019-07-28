@@ -10,10 +10,16 @@ describe('test the location functionalities', () => {
   let location = {
     name: 'Nairobi',
     male: 900,
-    female: 1000
+    female: 1000,
+    sublocation : {
+        name: 'sublocation',
+        male: 3,
+        female: 30
+    }
   };
 
   beforeAll( (done) => {
+      jest.setTimeout(10000);
     mongoose.connection.dropDatabase();
     mongoose.connect(`mongodb://${process.env.TEST_USER}:${process.env.TEST_PASSWORD}${process.env.TEST_HOST}/${process.env.TEST_NAME}`, {useNewUrlParser: true });
     done();
@@ -24,18 +30,18 @@ mongoose.connection.close();
   done();
 })
 it('it should create a location', () => {
-  return request(app).post('/location')
-  .send(location)
-  .expect(201)
-    .then(res => {
-      id = res.body.data._id;
-      expect(res.body).toBeInstanceOf(Object);
-      expect(res.body.message).toBe('successfully created');
-      expect(res.body.data.name).toEqual('Nairobi');
-      expect(res.body.data.male).toEqual(900);
-      expect(res.body.data.population).toEqual(1900);
-    });
-  });
+    return request(app).post('/location')
+        .send(location)
+        .expect(201)
+        .then(res => {
+            id = res.body.data._id;
+            expect(res.body).toBeInstanceOf(Object);
+            expect(res.body.message).toBe('successfully created');
+            expect(res.body.data.name).toEqual('Nairobi');
+            expect(res.body.data.male).toEqual(900);
+            expect(res.body.data.population).toEqual(1900);
+        });
+})
   it('it should fail to create a location with same name', () => {
     return request(app).post('/location')
     .send(location)
@@ -62,7 +68,12 @@ it('it should create a location', () => {
     let location = {
       name: 'Nairobi',
       male: 1000,
-      female: 1500
+      female: 1500,
+      sublocation: {
+          name: 'sublocation',
+          male:20,
+          female:100
+      }
     }
     return request(app).put(`/location/${id}`)
     .send(location)

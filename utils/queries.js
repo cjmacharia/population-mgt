@@ -22,7 +22,6 @@ export const getLocationById = async (res, id) => {
 };
 
 export const editLocation = async (res, id, data) => {
-  console.log(data)
   let location = await Location.findByIdAndUpdate(id , data.data, {new: true});
   response.updateSuccess(res, location);
 };
