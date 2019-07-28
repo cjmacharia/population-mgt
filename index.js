@@ -10,6 +10,7 @@ locationRoutes(app);
   if (process.env.NODE_ENV === 'development') {
     let dbUrl = `mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}${process.env.DB_HOST}/${process.env.DB_NAME}`;
 
+
     mongoose.connect(dbUrl,{ 
     useNewUrlParser: true }).then(() => console.log('connected')).catch((err) => console.log(err));
     
