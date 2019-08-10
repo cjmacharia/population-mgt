@@ -6,9 +6,8 @@
   "scripts": {
     "test": "jest --coverage --detectOpenHandles --force-exit",
     "clean": "rm -rf build && mkdir build",
-    "build-babel": "babel -d ./build . -s --ignore node_modules/**/*.js",
     "heroku": "npm run build && node dist/index.js",
-    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package*.json,./README* --copy-files",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore node_modules,./.babelrc,./package*.json,./README* --copy-files",
     "start": "nodemon index.js --exec babel-node",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
