@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage --detectOpenHandles --force-exit",
-    "clean": "rm -rf build && mkdir build",
-    "heroku": "npm run build && node build/index.js",
-    "build": "rm -rf ./build && mkdir build && babel ./ --out-dir build/ --ignore node_modules",
+    "clean": "rm -rf dist && mkdir dist",
+    "heroku": "npm run clean && npm run build && node dist/index.js",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore node_modules,./.babelrc,./package*.json,./README*",
     "start": "nodemon index.js --exec babel-node",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
