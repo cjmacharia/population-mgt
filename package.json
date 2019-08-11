@@ -7,7 +7,7 @@
     "test": "jest --coverage --detectOpenHandles --force-exit",
     "clean": "rm -rf dist && mkdir dist",
     "heroku": "npm run clean && npm run build && node dist/index.js",
-    "build": "babel ./ --out-dir dist/ --ignore node_modules,./.babelrc,./package*.json,./README*",
+    "build": "babel ./ --out-dir dist/ --ignore node_modules",
     "start": "nodemon index.js --exec babel-node",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
