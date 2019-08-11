@@ -14,7 +14,7 @@ locationRoutes(app);
     mongoose.connect(dbUrl,{ 
     useNewUrlParser: true }).then(() => console.log('connected')).catch((err) => console.log(err));
     
-app.listen(3030, () => {
+app.listen(process.env.PORT  || 3030, () => {
   console.log('server is up');
 });
 }
