@@ -6,6 +6,7 @@ import locationRoutes from './routes/location';
 const app = express();
 app.use(bodyParser.json());
 locationRoutes(app);
+console.log(process.env.NODE_ENV)
   // dbUrl = `mongodb://${process.env.TEST_USER}:${process.env.TEST_PASSWORD}${process.env.TEST_HOST}/${process.env.TEST_NAME}`;
   if (process.env.NODE_ENV === 'development || production') {
     console.log('cjmash')
