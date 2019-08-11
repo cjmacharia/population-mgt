@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import locationRoutes from './routes/location';
 const app = express();
+const PORT = process.env.PORT || 3030;
 app.use(bodyParser.json());
 locationRoutes(app);
 console.log(process.env.NODE_ENV)
@@ -16,6 +17,8 @@ console.log(process.env.NODE_ENV)
     mongoose.connect(dbUrl,{ 
     useNewUrlParser: true }).then(() => console.log('connected')).catch((err) => console.log(err));
     
-app.listen(process.env.PORT  || 3030);
+app.listen(PORT, () => {
+  console.log('server is up');
+});
 }
 export default app;
