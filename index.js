@@ -16,9 +16,9 @@ console.log(process.env.NODE_ENV)
 
     mongoose.connect(dbUrl,{ 
     useNewUrlParser: true }).then(() => console.log('connected')).catch((err) => console.log(err));
-    
+
+}
 app.listen(PORT, () => {
   console.log('server is up');
 });
-}
 export default app;
