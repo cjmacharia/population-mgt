@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3030;
 app.use(bodyParser.json());
 locationRoutes(app);
-console.log(process.env.NODE_ENV)
+console.log(process.env)
   // dbUrl = `mongodb://${process.env.TEST_USER}:${process.env.TEST_PASSWORD}${process.env.TEST_HOST}/${process.env.TEST_NAME}`;
   if (process.env.NODE_ENV === 'production') {
     console.log('cjmash')
